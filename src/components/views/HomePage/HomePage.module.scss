@@ -1,0 +1,13 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/bootstrap.scss';
+
+.link{
+  color:black;
+  text-decoration: none;
+
+  &:hover,
+  &.active {
+    color: black;
+    text-decoration: none;
+  }
+}
