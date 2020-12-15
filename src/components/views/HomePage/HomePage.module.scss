@@ -11,3 +11,29 @@
     text-decoration: none;
   }
 }
+
+.root {
+  padding: 15px;
+}
+
+.viewSubpages {
+  padding: 15px;
+  margin-left: auto;
+}
+
+.viewSubpagesImg {
+  background-color: grey;
+}
+
+.viewSubpagesText {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.colImg {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border: solid 1px blue;
+}
