@@ -19,10 +19,10 @@ const Header = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/oNas/">O nas</Nav.Link>
+            <Nav.Link href="/nasza drużyna/">O nas</Nav.Link>
             <NavDropdown title="Sklep" id="collasible-nav-dropdown">
               <NavDropdown.Item href="/ubrania/">Ubrania</NavDropdown.Item>
-              <NavDropdown.Item href="/sprzęt/">Sprzęt biwakowy</NavDropdown.Item>
+              <NavDropdown.Item href="/biwak/">Sprzęt biwakowy</NavDropdown.Item>
               <NavDropdown.Item href="/akcesoria/">Akcesoria</NavDropdown.Item>
             </NavDropdown>
           </Nav>

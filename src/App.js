@@ -9,7 +9,7 @@ import './styles/global.scss';
 import './styles/bootstrap.scss';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
-import HomePage from './components/views/HomePage/HomePage';
+import HomePage from './components/views/HomePage/HomePageContainer';
 import AboutUs from './components/views/AboutUs/AboutUs';
 import Clothes from './components/views/Clothes/Clothes';
 import Equipment from './components/views/Equipment/Equipment';
@@ -24,9 +24,9 @@ const App = () => (
       <MainLayout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/oNas/' component={AboutUs} />
+          <Route exact path='/nasza drużyna/' component={AboutUs} />
           <Route exact path='/ubrania/' component={Clothes} />
-          <Route exact path='/sprzęt/' component={Equipment} />
+          <Route exact path='/biwak/' component={Equipment} />
           <Route exact path='/akcesoria/' component={Accessories} />
           <Route exact path='/kontakt/' component={Contact} />
         </Switch>
