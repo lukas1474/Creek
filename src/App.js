@@ -11,7 +11,7 @@ import './styles/bootstrap.scss';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import HomePage from './components/views/HomePage/HomePageContainer';
 import AboutUs from './components/views/AboutUs/AboutUs';
-import Clothes from './components/views/Clothes/Clothes';
+import Clothes from './components/views/Clothes/ClothesContainer';
 import Equipment from './components/views/Equipment/Equipment';
 import Accessories from './components/views/Accessories/Accessories';
 import Contact from './components/views/Contact/Contact';

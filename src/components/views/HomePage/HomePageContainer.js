@@ -6,6 +6,5 @@ import HomePage from './HomePage';
 const mapStateToProps = state => ({
   subpages: getAll(state),
 });
-console.log(getAll);
 
 export default connect(mapStateToProps)(HomePage);
