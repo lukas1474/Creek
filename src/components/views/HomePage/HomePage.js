@@ -13,7 +13,7 @@ class HomePage extends React.Component {
 
     return (
       <div className={styles.root}>
-        <Container className={styles.container}>
+        <Container>
           <Row xs={1} md={1} lg={2}>
             {subpages && subpages.map(item => (
               <Row className={styles.viewSubpages} key={item.id}>
@@ -22,12 +22,11 @@ class HomePage extends React.Component {
                     <Col className={styles.colImg}>
                       <img
                         className={styles.viewSubpagesImg}
+                        src={item.image}
                         width={350}
                         height={250}
-                        alt='subpagesImg' />
-                      <div className={styles.przyklad}>
-                        {item.image}
-                      </div>
+                        alt='subpagesImg'
+                      />
                     </Col>
                     <Col className={styles.viewSubpagesText}>
                       <div>

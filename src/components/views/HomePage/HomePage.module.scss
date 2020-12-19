@@ -1,19 +1,22 @@
 @import '../../../styles/settings.scss';
 @import '../../../styles/bootstrap.scss';
 
+.root {
+  margin: 50px 0;
+  // padding: 15px;
+}
+
 .link{
   color:black;
   text-decoration: none;
+  cursor: pointer;
 
   &:hover,
   &.active {
     color: black;
     text-decoration: none;
+    transform: scale(1.1);
   }
-}
-
-.root {
-  padding: 15px;
 }
 
 .viewSubpages {
