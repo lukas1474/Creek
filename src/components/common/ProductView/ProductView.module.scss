@@ -1,0 +1,42 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/bootstrap.scss';
+
+.mainCol {
+  display: flex;
+  margin: 15px;
+  min-height: 500px;
+  border: 1px solid black;
+}
+
+.colLeft {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.img {
+  width: 100%;
+  height: 300px;
+}
+
+.colRight {
+  flex: start;
+  align-items: flex-start;
+  margin: auto;
+  // height: 100%;
+}
+
+.name {
+  font-size: 30px;
+  width: 250px;
+  color: black;
+}
+
+.buttonLine {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-left: 2px;
+  margin-bottom: 3px;
+}

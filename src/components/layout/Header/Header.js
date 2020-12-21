@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Header.module.scss';
-import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Navbar, Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
 import logo from '../../../photo/creekLOGO.png';
@@ -19,12 +19,9 @@ const Header = () => (
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="/nasza drużyna/">O nas</Nav.Link>
-            <NavDropdown title="Sklep" id="collasible-nav-dropdown">
-              <NavDropdown.Item href="/ubrania/">Ubrania</NavDropdown.Item>
-              <NavDropdown.Item href="/biwak/">Sprzęt biwakowy</NavDropdown.Item>
-              <NavDropdown.Item href="/akcesoria/">Akcesoria</NavDropdown.Item>
-            </NavDropdown>
+            <Nav.Link href="/ubrania/">Ubrania</Nav.Link>
+            <Nav.Link href="/biwak/">Sprzęt biwakowy</Nav.Link>
+            <Nav.Link href="/akcesoria/">Akcesoria</Nav.Link>
           </Nav>
           <Nav>
             <Nav.Link href="/kontakt/">Kontakt</Nav.Link>
