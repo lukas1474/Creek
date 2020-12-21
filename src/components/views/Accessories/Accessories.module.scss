@@ -1,0 +1,13 @@
+@import '../../../styles/settings.scss';
+@import '../../../styles/bootstrap.scss';
+
+.root {
+  padding: $base-padding;
+}
+
+.viewAccessories {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+}

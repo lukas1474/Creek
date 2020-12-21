@@ -10,11 +10,10 @@ import './styles/bootstrap.scss';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import HomePage from './components/views/HomePage/HomePageContainer';
-import AboutUs from './components/views/AboutUs/AboutUs';
 import Clothes from './components/views/Clothes/ClothesContainer';
 import Equipment from './components/views/Equipment/EquipmentContainer';
-import Accessories from './components/views/Accessories/Accessories';
-import Contact from './components/views/Contact/Contact';
+import Accessories from './components/views/Accessories/AccessoriesContainer';
+import Contact from './components/views/Contact/ContactContainer';
 
 
 
@@ -24,7 +23,6 @@ const App = () => (
       <MainLayout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/nasza drużyna/' component={AboutUs} />
           <Route exact path='/ubrania/' component={Clothes} />
           <Route exact path='/biwak/' component={Equipment} />
           <Route exact path='/akcesoria/' component={Accessories} />
