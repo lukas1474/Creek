@@ -5,8 +5,12 @@ import styles from './ProductView.module.scss';
 
 import { Row, Col } from 'react-bootstrap';
 import CartButton from '../CartButton/CartButton';
+import { connect } from 'react-redux';
+import { addToCart } from '../../../redux/cartRedux';
 
-const ProductView = (item) => {
+const ProductView = (item, props) => {
+
+  console.log(props);
   return (
     <Col xs={12} md={6} lg={4} key={item.id} className={styles.mainCol} >
       <Col className={styles.colLeft}>
@@ -18,7 +22,7 @@ const ProductView = (item) => {
         <p>{item.price}</p>
         <p>{item.information}</p>
         <Row className={styles.buttonLine}>
-          <CartButton />
+          <CartButton  />
         </Row>
       </Col>
     </Col>
@@ -28,6 +32,7 @@ const ProductView = (item) => {
 ProductView.propTypes = {
   children: PropTypes.node,
   item: PropTypes.string,
+  addToCart: PropTypes.func,
 };
 
-export default ProductView;
+export default connect(null, { addToCart }) (ProductView);

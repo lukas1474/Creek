@@ -1,4 +1,5 @@
 const initialState = {
+
   subpages: [
     {
       id: 'ubrania',
@@ -270,6 +271,10 @@ const initialState = {
       image: 'https://images.pexels.com/photos/2444429/pexels-photo-2444429.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260',
     },
   ],
+
+  cart: {
+    cartNumber: 0,
+  },
 
 };
 

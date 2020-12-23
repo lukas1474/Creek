@@ -7,20 +7,21 @@ import { Button } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
-const CartButton = () => {
+import { connect } from 'react-redux';
+import { addToCart } from '../../../redux/cartRedux';
+
+const CartButton = (props) => {
+  console.log(props);
   return (
-    <Button variant="secondary" title="Add to Cart" className={styles.cartButton}>
+    <Button variant="secondary" title="Add to Cart" onClick={props.addToCart} className={styles.cartButton} >
       <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon}></FontAwesomeIcon>
     </Button>
   );
 };
 
-Button.propTypes = {
+CartButton.propTypes = {
   children: PropTypes.node,
-  noHover: PropTypes.bool,
-  className: PropTypes.string,
-  variant: PropTypes.string,
-  Comp: PropTypes.string,
+  addToCart: PropTypes.func,
 };
 
-export default CartButton;
+export default connect(null, { addToCart }) (CartButton);
