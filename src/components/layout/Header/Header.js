@@ -49,12 +49,14 @@ const Header = (props) => {
             </Navbar>
           </Col>
           <Col className={`col-3 ${styles.colRight}`}>
-            <a href='/' className={styles.cart}>
-              <div className={styles.cartIcon} onClick={() => this.togglePopup(true)}>
-                <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-                <span>{props.cartProps.cartNumber}</span>
-              </div>
-            </a>
+            <Link to={'/koszyk/'}>
+              <p className={styles.cart}>
+                <div className={styles.cartIcon}>
+                  <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
+                  <span>{props.cartProps.cartNumber}</span>
+                </div>
+              </p>
+            </Link>
           </Col>
         </Row>
       </div>

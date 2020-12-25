@@ -13,7 +13,7 @@ import { addToCart } from '../../../redux/cartRedux';
 const CartButton = (props) => {
   console.log(props);
   return (
-    <Button variant="secondary" title="Add to Cart" onClick={props.addToCart} className={styles.cartButton} >
+    <Button variant="secondary" title="Add to Cart" onClick={() => props.addToCart('product')} className={styles.cartButton} >
       <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon}></FontAwesomeIcon>
     </Button>
   );

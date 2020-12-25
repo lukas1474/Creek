@@ -14,6 +14,7 @@ import Clothes from './components/views/Clothes/ClothesContainer';
 import Equipment from './components/views/Equipment/EquipmentContainer';
 import Accessories from './components/views/Accessories/AccessoriesContainer';
 import Contact from './components/views/Contact/ContactContainer';
+import Cart from './components/features/Cart/Cart';
 
 
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route exact path='/biwak/' component={Equipment} />
           <Route exact path='/akcesoria/' component={Accessories} />
           <Route exact path='/kontakt/' component={Contact} />
+          <Route exact path='/koszyk/' component={Cart} />
         </Switch>
       </MainLayout>
     </BrowserRouter>

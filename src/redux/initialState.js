@@ -274,6 +274,8 @@ const initialState = {
 
   cart: {
     cartNumber: 0,
+    cartCost: 0,
+
   },
 
 };
