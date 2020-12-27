@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 
 import styles from './ProductView.module.scss';
 
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 import CartButton from '../CartButton/CartButton';
 import { connect } from 'react-redux';
 import { addToCart } from '../../../redux/cartRedux';
@@ -22,8 +24,12 @@ const ProductView = (item, props) => {
         <p>{item.price}</p>
         <p>{item.information}</p>
         <Row className={styles.buttonLine}>
-          <CartButton  />
+          <CartButton {...item}/>
+
         </Row>
+        <Button variant="secondary" title="Add to Cart" onClick={(props) => props.addToCart('product')} className={styles.cartButton} >
+          <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon}></FontAwesomeIcon>
+        </Button>
       </Col>
     </Col>
   );
@@ -35,4 +41,4 @@ ProductView.propTypes = {
   addToCart: PropTypes.func,
 };
 
-export default connect(null, { addToCart }) (ProductView);
+export default connect(null, { addToCart })(ProductView);

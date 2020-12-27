@@ -15,10 +15,10 @@ const ADD_TO_CART = createActionName('ADD_TO_CART');
 export const GET_NUMBER_CART = 'GET_NUMBER_CART';
 
 export const addToCart = (productName) => {
-  return(dispatch) => {
+  return (dispatch) => {
     console.log('add to cart');
     console.log('Product:', productName);
-    dispatch ({
+    dispatch({
       type: ADD_TO_CART,
       payload: productName,
     });
@@ -26,23 +26,24 @@ export const addToCart = (productName) => {
 };
 
 export const getNumber = () => {
-  return(dispatch) => {
+  return (dispatch) => {
     console.log('get number');
-    dispatch ({
+    dispatch({
       type: GET_NUMBER_CART,
     });
   };
 };
 
 export default function reducer(state = [], action) {
-  switch(action.type) {
-    case ADD_TO_CART:
-      // eslint-disable-next-line no-case-declarations
-      const addQuantity = { ...state[action.payload]};
+  switch (action.type) {
+    case ADD_TO_CART: {
+      let addQuantity = { ...state.products[action.payload] };
       console.log(addQuantity);
+      addQuantity.numbers += 1;
       return {
         cartNumber: state.cartNumber + 1,
       };
+    }
     case GET_NUMBER_CART:
       return {
         ...state,
