@@ -4,9 +4,7 @@ import thunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 
 import subpagesReducer from './subpagesRedux';
-import clothesReducer from './clothesRedux';
-import equipmentReducer from './equipmentRedux';
-import accessoriesReducer from './accessoriesRedux';
+import productsReducer from './productsRedux';
 import contactReducer from './contactRedux';
 import cartReducer from './cartRedux';
 
@@ -14,9 +12,7 @@ const middleware = [thunk];
 
 const reducers = {
   subpages: subpagesReducer,
-  clothes: clothesReducer,
-  equipment: equipmentReducer,
-  accessories: accessoriesReducer,
+  products: productsReducer,
   contact: contactReducer,
   cart: cartReducer,
 

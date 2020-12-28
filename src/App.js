@@ -10,23 +10,18 @@ import './styles/bootstrap.scss';
 
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import HomePage from './components/views/HomePage/HomePageContainer';
-import Clothes from './components/views/Clothes/ClothesContainer';
-import Equipment from './components/views/Equipment/EquipmentContainer';
-import Accessories from './components/views/Accessories/AccessoriesContainer';
+import Products from './components/views/Products/ProductsContainer';
 import Contact from './components/views/Contact/ContactContainer';
 import Cart from './components/features/Cart/Cart';
 
-
-
 const App = () => (
+
   <Provider store={store}>
     <BrowserRouter>
       <MainLayout>
         <Switch>
           <Route exact path='/' component={HomePage} />
-          <Route exact path='/ubrania/' component={Clothes} />
-          <Route exact path='/biwak/' component={Equipment} />
-          <Route exact path='/akcesoria/' component={Accessories} />
+          <Route exact path='/sklep/' component={Products} />
           <Route exact path='/kontakt/' component={Contact} />
           <Route exact path='/koszyk/' component={Cart} />
         </Switch>

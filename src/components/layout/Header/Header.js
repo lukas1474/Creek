@@ -40,9 +40,7 @@ const Header = (props) => {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/ubrania/">Ubrania</Nav.Link>
-                  <Nav.Link href="/biwak/">Sprzęt biwakowy</Nav.Link>
-                  <Nav.Link href="/akcesoria/">Akcesoria</Nav.Link>
+                  <Nav.Link href="/sklep/">Sklep</Nav.Link>
                   <Nav.Link href="/kontakt/">Kontakt</Nav.Link>
                 </Nav>
               </Navbar.Collapse>
