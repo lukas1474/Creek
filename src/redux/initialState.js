@@ -3,8 +3,9 @@ const initialState = {
   subpages: [],
   products: [],
   contact: [],
-  cart: [],
-
+  cart: {
+    data: [],
+  },
   // subpages: [
   //   {
   //     id: 'ubrania',

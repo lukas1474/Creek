@@ -9,9 +9,39 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 class ProductView extends React.Component {
 
-  handleClick = (name, image, price, _id) => {
-    this.props.addToCart(name, image, price, _id);
+  constructor(props) {
+    super(props);
+    this.state = {
+      qty: 1,
+      totalPrice: this.props.price,
+    };
   }
+
+  handleClick = (name, image, totalPrice, price, _id, qty) => {
+    this.setState({
+      totalPrice: this.state.qty * price,
+    });
+    this.props.addToCart(name, image, totalPrice, _id, qty);
+    this.setState({
+      qty: 1,
+    });
+  }
+
+  decrease = () => {
+    if (this.state.qty > 1) {
+      console.log('decrease', this.state.qty);
+      this.setState({
+        qty: this.state.qty - 1,
+      });
+    }
+  };
+
+  increase = () => {
+    this.setState({
+      qty: this.state.qty + 1,
+    });
+  };
+
 
   // addToCart = (products) => {
   //   const cart = this.state.cart.slice();
@@ -29,7 +59,9 @@ class ProductView extends React.Component {
 
   render() {
 
-    const { _id, image, name, sex, price, information, addToCart, products } = this.props;
+    const { _id, image, name, sex, price, information } = this.props;
+    let qty = this.state.qty;
+    let totalPrice = price * qty;
 
     return (
       <Col xs={12} md={6} lg={4} key={_id} className={styles.mainCol} >
@@ -48,7 +80,7 @@ class ProductView extends React.Component {
             <Button
               variant="secondary"
               title="Dodaj do koszyka"
-              onClick={() => { this.props.addToCart(name, image, price, _id);}}
+              onClick={() => this.handleClick(name, image, totalPrice, price, _id, qty)}
               className={styles.cartButton}
             >
               <FontAwesomeIcon
@@ -57,8 +89,24 @@ class ProductView extends React.Component {
               >
               </FontAwesomeIcon>
             </Button>
-            {console.log(addToCart)}
-
+            {console.log(this.props.addToCart)}
+            <Row>
+              <Button variant="primary"
+                onClick={() => {
+                  this.decrease();
+                }}
+              >
+                -
+              </Button>
+              <p>{this.state.qty}</p>
+              <Button variant="primary"
+                onClick={() => {
+                  this.increase();
+                }}
+              >
+                +
+              </Button>
+            </Row>
           </Row>
         </Col>
       </Col>
@@ -67,6 +115,9 @@ class ProductView extends React.Component {
 }
 
 ProductView.propTypes = {
+  qty: PropTypes.any,
+  decrease: PropTypes.func,
+  increase: PropTypes.func,
   products: PropTypes.any,
   children: PropTypes.node,
   _id: PropTypes.node,

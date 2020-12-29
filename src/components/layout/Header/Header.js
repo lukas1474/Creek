@@ -9,7 +9,7 @@ import { getNumber, getAllCarts } from '../../../redux/cartRedux';
 
 
 import { Navbar, Nav, Row, Col } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
@@ -19,6 +19,9 @@ const Header = (props) => {
   useEffect(() => {
     getNumber();
   }, []);
+
+  const productInd = props.cartProps.data.reduce((a, b) => a + (b.qty || 0), 0);
+
 
   return (
     <header className={styles.header}>
@@ -36,20 +39,20 @@ const Header = (props) => {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <Nav.Link href="/sklep/">Sklep</Nav.Link>
-                  <Nav.Link href="/kontakt/">Kontakt</Nav.Link>
+                  <NavLink to={'/sklep'}>Sklep</NavLink>
+                  <NavLink to={'/kontakt'}>Kontakt</NavLink>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
           </Col>
           <Col className={`col-3 ${styles.colRight}`}>
             <Link to={'/koszyk/'}>
-              <p className={styles.cart}>
-                <div className={styles.cartIcon}>
+              <div className={styles.cart}>
+                <p className={styles.cartIcon}>
                   <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-                  <span>{props.cartProps.length}</span>
-                </div>
-              </p>
+                  <span>{productInd ? productInd : 0}</span>
+                </p>
+              </div>
             </Link>
           </Col>
         </Row>

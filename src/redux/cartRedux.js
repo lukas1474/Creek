@@ -93,23 +93,34 @@ export const getNumber = () => {
 export default function reducer(state = [], action) {
   switch (action.type) {
     case ADD_TO_CART: {
-      // let addQuantity = { ...state.products[action.payload] };
-      // console.log(addQuantity);
-      // addQuantity.numbers += 1;
-      return [
-        // cartNumber: state.cartNumber + 1,
-        // cartItems: action.payload.cartItems,
+      const existingCartItem = state.data.find(
+        (item) => item._id === action.payload._id
+      );
+      if (existingCartItem) {
+        return {
+          ...state,
+          data: state.data.map((product) => {
+            if (product._id === action.payload._id) {
+              return {
+                ...product,
+                qty: product.qty + action.payload.qty,
+                totalPrice: product.totalPrice + action.payload.totalPrice,
+              };
+            }
+            return { ...product };
+          }),
+        };
+      }
+      return {
         ...state,
-        {
-          ...action.payload,
-        },
-      ];
+        data: [...state.data, action.payload],
+      };
     }
     case REMOVE_FROM_CART: {
-      state.pop();
-      return [
-        ...state,
-      ];
+      state.data.pop();
+      return {
+        data: [...state.data],
+      };
     }
     case GET_NUMBER_CART:
       return [

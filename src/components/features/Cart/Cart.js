@@ -16,29 +16,31 @@ class Cart extends React.Component {
   render() {
 
     const { cart } = this.props;
-    console.warn('Props', this.props);
+    console.log(cart);
 
-    const TotalPrice = cart.reduce((a, b) => a + (b.price || 0), 0);
+    const totalPrice = cart.data.reduce((a, b) => a + (b.totalPrice || 0), 0);
+    const totalQty = cart.data.reduce((a, b) => a + (b.qty || 0), 0);
 
-    if (cart.length > 0) {
+    if (cart.data.length > 0) {
       return (
         <div className={styles.root}>
           <div>
-            <h2>Masz {cart.length} produktów w koszyku</h2>
+
+            <h2>{totalQty} w koszyku</h2>
           </div>
-          {cart && cart.map(item => (
+          {cart.data && cart.data.map(item => (
             <Col xs={12} md={6} lg={4} key={item._id} className={styles.mainCol} >
               <Col className={styles.colLeft}>
                 <img src={item.image} alt='zdjęcie ubrania' className={styles.img} />
               </Col>
               {console.log(cart)}
               <Col className={styles.colRight}>
-                <h2 className={styles.name}>{item.name}</h2>
-                <p>{item.price}</p>
+                <h2 className={styles.name}>{item.name} x {item.qty}</h2>
+                <p>{item.totalPrice}</p>
                 <Row className={styles.buttonLine}>
                   <Button variant="danger" title="Usuń z koszyka"
                     className={styles.removeButton}
-                    onClick={() => { this.props.removeFromCart();}}
+                    onClick={() => { this.props.removeFromCart(); }}
                   >
                     <FontAwesomeIcon icon={faWindowClose} className={styles.icon}></FontAwesomeIcon>
                   </Button>
@@ -47,12 +49,12 @@ class Cart extends React.Component {
               </Col>
             </Col>
           ))}
-          {cart.length !== 0 && (
+          {cart.data.length !== 0 && (
             <div className={styles.cart}>
               <div className={styles.total}>
                 <div>
                   Razem:{' '}
-                  {TotalPrice}
+                  {totalPrice}
                 </div>
                 <Button variant="secondary">Zamówienie</Button>
               </div>
@@ -62,7 +64,7 @@ class Cart extends React.Component {
         </div>
       );
     } else {
-      return <h2>koszyk jest pusty</h2>;
+      return <h2>Koszyk jest pusty</h2>;
     }
   }
 }
@@ -70,19 +72,20 @@ class Cart extends React.Component {
 Cart.propTypes = {
   children: PropTypes.node,
   removeFromCart: PropTypes.func,
-  cart: PropTypes.arrayOf({
-    name: PropTypes.string,
-    information: PropTypes.string,
-    price: PropTypes.number,
-    numbers: PropTypes.number,
-    category: PropTypes.string,
-    image: PropTypes.string,
-    sex: PropTypes.string,
+  cart: PropTypes.shape({
+    data: PropTypes.arrayOf({
+      name: PropTypes.string,
+      information: PropTypes.string,
+      totalPrice: PropTypes.number,
+      numbers: PropTypes.number,
+      category: PropTypes.string,
+      image: PropTypes.string,
+      sex: PropTypes.string,
+    }),
   }),
 };
-
-Cart.defaultProps = {
-  cart: [],
-};
+// Cart.defaultProps = {
+//   cart: [],
+// };
 
 export default Cart;

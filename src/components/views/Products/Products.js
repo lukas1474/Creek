@@ -28,7 +28,7 @@ class Products extends React.Component {
       <div className={styles.root}>
         <Row className={styles.viewClothes}>
           {products.data && products.data.map(item => (
-            <ProductView key={item} {...item} />
+            <ProductView key={item._id} {...item} />
           ))}
         </Row>
       </div >
@@ -52,8 +52,8 @@ Products.propTypes = {
   }),
 };
 
-Products.defaultProps = {
-  products: [],
-};
+// Products.defaultProps = {
+//   products: [],
+// };
 
 export default Products;
