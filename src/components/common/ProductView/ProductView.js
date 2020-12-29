@@ -9,13 +9,27 @@ import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 class ProductView extends React.Component {
 
-  handleClick = (name, image, price) => {
-    this.props.addToCart(name, image, price);
+  handleClick = (name, image, price, _id) => {
+    this.props.addToCart(name, image, price, _id);
   }
+
+  // addToCart = (products) => {
+  //   const cart = this.state.cart.slice();
+  //   let alreadyInCart = false;
+  //   cart.forEach((item) => {
+  //     if (item._id === products.data._id) {
+  //       item.count++;
+  //       alreadyInCart = true;
+  //     }
+  //   });
+  //   if (!alreadyInCart) {
+  //     cart.push({ ...products, count: 1 });
+  //   }
+  // };
 
   render() {
 
-    const { _id, image, name, sex, price, information, addToCart } = this.props;
+    const { _id, image, name, sex, price, information, addToCart, products } = this.props;
 
     return (
       <Col xs={12} md={6} lg={4} key={_id} className={styles.mainCol} >
@@ -31,11 +45,17 @@ class ProductView extends React.Component {
           <p>{price}</p>
           <p>{information}</p>
           <Row className={styles.buttonLine}>
-            <Button variant="secondary" title="Add to Cart" onClick={() => {
-              this.handleClick(name, image, price);
-            }}
-            className={styles.cartButton} >
-              <FontAwesomeIcon icon={faShoppingBasket} className={styles.icon}></FontAwesomeIcon>
+            <Button
+              variant="secondary"
+              title="Dodaj do koszyka"
+              onClick={() => { this.props.addToCart(name, image, price, _id);}}
+              className={styles.cartButton}
+            >
+              <FontAwesomeIcon
+                icon={faShoppingBasket}
+                className={styles.icon}
+              >
+              </FontAwesomeIcon>
             </Button>
             {console.log(addToCart)}
 
@@ -47,6 +67,7 @@ class ProductView extends React.Component {
 }
 
 ProductView.propTypes = {
+  products: PropTypes.any,
   children: PropTypes.node,
   _id: PropTypes.node,
   item: PropTypes.string,

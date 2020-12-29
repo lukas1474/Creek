@@ -14,6 +14,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 const Header = (props) => {
+  console.log(props);
 
   useEffect(() => {
     getNumber();

@@ -34,23 +34,41 @@ const REMOVE_FROM_CART = createActionName('REMOVE_FROM_CART');
 //   localStorage.setItem('cartItems', JSON.stringify(cartItems));
 // };
 
-export const addToCart = payload => ({
-  payload,
-  type: ADD_TO_CART,
-});
+// export const addToCart = payload => ({
+//   payload,
+//   type: ADD_TO_CART,
+// });
+
+export const addToCart = (payload) => {
+  return {
+    payload,
+    type: ADD_TO_CART,
+  };
+};
+
+export const removeFromCart = () => {
+  return {
+    type: REMOVE_FROM_CART,
+  };
+};
+
+// export const removeFromCart = (payload) => ({
+//   payload,
+//   type: REMOVE_FROM_CART,
+// });
 
 console.log(addToCart);
 
-export const removeFromCart = (items, products) => (dispatch) => {
-  const cartItems = items.slice().filter(
-    exist => exist._id !== products._id
-  );
-  dispatch({
-    type: REMOVE_FROM_CART,
-    payload: {cartItems},
-  });
-  localStorage.setItem(JSON.stringify(cartItems));
-};
+// export const removeFromCart = (items, products) => (dispatch) => {
+//   const cartItems = items.slice().filter(
+//     exist => exist._id !== products._id
+//   );
+//   dispatch({
+//     type: REMOVE_FROM_CART,
+//     payload: {cartItems},
+//   });
+//   localStorage.setItem(JSON.stringify(cartItems));
+// };
 
 // export const addToCart = (productName) => {
 //   return (dispatch) => {
@@ -78,19 +96,17 @@ export default function reducer(state = [], action) {
       // let addQuantity = { ...state.products[action.payload] };
       // console.log(addQuantity);
       // addQuantity.numbers += 1;
-      console.log(state);
       return [
         // cartNumber: state.cartNumber + 1,
         // cartItems: action.payload.cartItems,
         ...state,
         {
-          name: action.payload.name,
-          image: action.payload.image,
-          price: action.payload.price,
+          ...action.payload,
         },
       ];
     }
     case REMOVE_FROM_CART: {
+      state.pop();
       return [
         ...state,
       ];
