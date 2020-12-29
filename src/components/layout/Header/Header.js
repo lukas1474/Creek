@@ -1,24 +1,19 @@
 import React, { useEffect } from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { getNumber, getAll } from '../../../redux/cartRedux';
-
 import styles from './Header.module.scss';
+import logo from '../../../photo/creekLOGO.png';
+
+import { connect } from 'react-redux';
+import { getNumber, getAllCarts } from '../../../redux/cartRedux';
+
+
 import { Navbar, Nav, Row, Col } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faMobileAlt, faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
-
-import logo from '../../../photo/creekLOGO.png';
-import { propTypes } from 'react-bootstrap/esm/Image';
-
-
+import { faShoppingBasket } from '@fortawesome/free-solid-svg-icons';
 
 const Header = (props) => {
-
-  console.log(props);
 
   useEffect(() => {
     getNumber();
@@ -51,7 +46,7 @@ const Header = (props) => {
               <p className={styles.cart}>
                 <div className={styles.cartIcon}>
                   <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-                  <span>{props.cartProps.cartNumber}</span>
+                  <span>{props.cartProps.length}</span>
                 </div>
               </p>
             </Link>
@@ -64,15 +59,12 @@ const Header = (props) => {
 
 Header.propTypes = {
   img: PropTypes.object,
-  getAll: PropTypes.object,
-  cartProps: PropTypes.object,
+  getAllCarts: PropTypes.object,
+  cartProps: PropTypes.array,
 };
 
 const mapStateToProps = (state) => ({
-  cartProps: getAll(state),
-
+  cartProps: getAllCarts(state),
 });
-// {console.log(cartNumber)}
-
 
 export default connect(mapStateToProps, { getNumber })(Header);

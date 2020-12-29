@@ -11,7 +11,7 @@ const API_SUBPAGES = createActionName('API_SUBPAGES');
 export const fetchStarted = payload => ({ payload, type: FETCH_START });
 export const fetchSuccess = payload => ({ payload, type: FETCH_SUCCESS });
 export const fetchError = payload => ({ payload, type: FETCH_ERROR });
-export const apiSubpages = payload => ({payload: payload, type: API_SUBPAGES });
+export const apiSubpages = payload => ({payload, type: API_SUBPAGES });
 
 export default function reducer(statePart = [], action = {}) {
   switch (action.type) {

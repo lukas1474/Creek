@@ -1,9 +1,8 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { API_URL } from '../../../../src/config';
 
 import styles from './HomePage.module.scss';
+import { API_URL } from '../../../../src/config';
 
 import { Link } from 'react-router-dom';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -16,7 +15,6 @@ class HomePage extends React.Component {
         return results.json();
       }).then(results => {
         const { apiSubpages } = this.props;
-        console.log(apiSubpages);
         apiSubpages(results);
       });
   }
@@ -24,20 +22,19 @@ class HomePage extends React.Component {
   render() {
 
     const { subpages } = this.props;
-    console.log(subpages);
+
     return (
       <div className={styles.root}>
         <Container>
           <Row xs={1} md={1} lg={2}>
-            {subpages.data && subpages.data.map(item => (
-
-              <Row className={styles.viewSubpages} key={item.id}>
-                <Link to={`/${item.id}`} className={styles.link}>
+            { subpages.data && subpages.data.map(subpage => (
+              <Row className={styles.viewSubpages} key={subpage._id}>
+                <Link to={`/${subpage.name}`} className={styles.link}>
                   <Col>
                     <Col className={styles.colImg}>
                       <img
                         className={styles.viewSubpagesImg}
-                        src={item.image}
+                        src={subpage.image}
                         width={350}
                         height={250}
                         alt='subpagesImg'
@@ -45,7 +42,7 @@ class HomePage extends React.Component {
                     </Col>
                     <Col className={styles.viewSubpagesText}>
                       <div>
-                        <h2>{item.name}</h2>
+                        <h2>{subpage.name}</h2>
                       </div>
                     </Col>
                   </Col>
@@ -62,12 +59,12 @@ class HomePage extends React.Component {
 HomePage.propTypes = {
   children: PropTypes.node,
   apiSubpages: PropTypes.func,
-  subpages: PropTypes.arrayOf(
-    PropTypes.shape({
+  subpages: PropTypes.shape({
+    data: PropTypes.arrayOf({
       name: PropTypes.string,
       image: PropTypes.string,
-    })
-  ),
+    }),
+  }),
 };
 
 export default HomePage;

@@ -1,13 +1,9 @@
 const initialState = {
 
-  // subpages: [],
-  // products: [],
-  // contact: [],
-
-  cart: {
-    cartNumber: 0,
-    cartCost: 0,
-  },
+  subpages: [],
+  products: [],
+  contact: [],
+  cart: [],
 
   // subpages: [
   //   {

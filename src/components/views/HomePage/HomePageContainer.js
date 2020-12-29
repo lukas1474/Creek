@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 });
 
 const mapDispatchToProps = dispatch => ({
-  apiSubpages: (result) => dispatch(apiSubpages(result)),
+  apiSubpages: (results) => dispatch(apiSubpages(results)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

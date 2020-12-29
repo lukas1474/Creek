@@ -11,8 +11,9 @@ import './styles/bootstrap.scss';
 import MainLayout from './components/layout/MainLayout/MainLayout';
 import HomePage from './components/views/HomePage/HomePageContainer';
 import Products from './components/views/Products/ProductsContainer';
+import ProductsPage from './components/views/ProductsPage/ProductsPageContainer';
 import Contact from './components/views/Contact/ContactContainer';
-import Cart from './components/features/Cart/Cart';
+import Cart from './components/features/Cart/CartContainer';
 
 const App = () => (
 
@@ -22,6 +23,7 @@ const App = () => (
         <Switch>
           <Route exact path='/' component={HomePage} />
           <Route exact path='/sklep/' component={Products} />
+          <Route exact path='/products/:productsId' component={ProductsPage} />
           <Route exact path='/kontakt/' component={Contact} />
           <Route exact path='/koszyk/' component={Cart} />
         </Switch>

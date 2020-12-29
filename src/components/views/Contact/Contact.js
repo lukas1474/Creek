@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Contact.module.scss';
-import { Col, Container, Row, Card } from 'react-bootstrap';
+import { Col, Row, Card } from 'react-bootstrap';
 
 class Contact extends React.Component {
   render() {

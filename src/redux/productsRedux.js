@@ -1,5 +1,11 @@
 export const getAll = ({ products }) => products;
 
+export const getProductById = ({products}, productId) => {
+  const filtered = products.data && products.data.filter(product => product.id == productId);
+  console.log(products);
+  return filtered && filtered.length ? filtered[0] : null;
+};
+
 const reducerName = 'products';
 const createActionName = name => `app/${reducerName}/${name}`;
 

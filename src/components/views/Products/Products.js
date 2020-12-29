@@ -1,14 +1,12 @@
-/* eslint-disable react/prop-types */
 import React from 'react';
 import PropTypes from 'prop-types';
-import { API_URL } from '../../../../src/config';
 
 import styles from './Products.module.scss';
+import { API_URL } from '../../../../src/config';
+
+import ProductView from '../../common/ProductView/ProductViewContainer';
 
 import { Row } from 'react-bootstrap';
-import ProductView from '../../common/ProductView/ProductView';
-
-
 
 class Products extends React.Component {
 
@@ -18,7 +16,6 @@ class Products extends React.Component {
         return results.json();
       }).then(results => {
         const { apiProducts } = this.props;
-        console.log(apiProducts);
         apiProducts(results);
       });
   }
@@ -26,7 +23,7 @@ class Products extends React.Component {
   render() {
 
     const { products } = this.props;
-    console.log(products);
+
     return (
       <div className={styles.root}>
         <Row className={styles.viewClothes}>
@@ -42,8 +39,8 @@ class Products extends React.Component {
 Products.propTypes = {
   children: PropTypes.node,
   apiProducts: PropTypes.func,
-  products: PropTypes.arrayOf(
-    PropTypes.shape({
+  products: PropTypes.shape({
+    data: PropTypes.arrayOf({
       name: PropTypes.string,
       information: PropTypes.string,
       price: PropTypes.number,
@@ -51,8 +48,12 @@ Products.propTypes = {
       category: PropTypes.string,
       image: PropTypes.string,
       sex: PropTypes.string,
-    })
-  ),
+    }),
+  }),
+};
+
+Products.defaultProps = {
+  products: [],
 };
 
 export default Products;
