@@ -39,8 +39,8 @@ const Header = (props) => {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="mr-auto">
-                  <NavLink to={'/sklep'}>Sklep</NavLink>
-                  <NavLink to={'/kontakt'}>Kontakt</NavLink>
+                  <NavLink className={styles.link} to={'/sklep'}>Sklep</NavLink>
+                  <NavLink className={styles.link} to={'/kontakt'}>Kontakt</NavLink>
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -50,7 +50,7 @@ const Header = (props) => {
               <div className={styles.cart}>
                 <p className={styles.cartIcon}>
                   <FontAwesomeIcon className={styles.icon} icon={faShoppingBasket} />
-                  <span>{productInd ? productInd : 0}</span>
+                  <span className={styles.span}>{productInd ? productInd : 0}</span>
                 </p>
               </div>
             </Link>

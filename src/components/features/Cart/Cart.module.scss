@@ -5,12 +5,31 @@
   padding: $base-padding;
   width: 100%;
   height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.totalQty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
 }
 
 .mainCol {
   display: flex;
   margin: 15px;
-  min-height: 500px;
+  min-height: 110px;
+  max-width: 700px;
   border: 1px solid black;
 }
 
@@ -22,39 +41,40 @@
 }
 
 .img {
-  width: 100%;
-  height: 300px;
+  width: 80px;
+  height: 80px;
 }
 
 .colRight {
   flex: start;
   align-items: flex-start;
   margin: auto;
-  // height: 100%;
 }
 
 .name {
-  font-size: 30px;
-  width: 250px;
+  font-size: 25px;
+  width: 350px;
   color: black;
 }
 
 .buttonLine {
   display: flex;
   position: relative;
+  justify-content: space-between;
+  justify-self: end;
   align-items: center;
+  width: 100%;
   margin-left: 2px;
   margin-bottom: 3px;
 }
 
-// .removeButton {
-//   background-color: #2b4170;
-//   width: 120px;
-//   max-height: 50px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-// }
+.removeButton {
+  width: 60px;
+  max-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
 .icon {
   cursor: pointer;
@@ -63,4 +83,19 @@
   font-size: 20px;
   margin-top: 5%;
   margin-bottom: 5%;
+}
+
+.cart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+}
+
+.empty {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5px;
+  height: 200px
 }

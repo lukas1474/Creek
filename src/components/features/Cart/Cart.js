@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 import styles from './Cart.module.scss';
-import { Row, Col, Button } from 'react-bootstrap';
+import { Row, Col, Button, Container } from 'react-bootstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faWindowClose } from '@fortawesome/free-solid-svg-icons';
 
@@ -24,47 +24,52 @@ class Cart extends React.Component {
     if (cart.data.length > 0) {
       return (
         <div className={styles.root}>
-          <div>
-
-            <h2>{totalQty} w koszyku</h2>
-          </div>
-          {cart.data && cart.data.map(item => (
-            <Col xs={12} md={6} lg={4} key={item._id} className={styles.mainCol} >
-              <Col className={styles.colLeft}>
-                <img src={item.image} alt='zdjęcie ubrania' className={styles.img} />
-              </Col>
-              {console.log(cart)}
-              <Col className={styles.colRight}>
-                <h2 className={styles.name}>{item.name} x {item.qty}</h2>
-                <p>{item.totalPrice}</p>
-                <Row className={styles.buttonLine}>
-                  <Button variant="danger" title="Usuń z koszyka"
-                    className={styles.removeButton}
-                    onClick={() => { this.props.removeFromCart(); }}
-                  >
-                    <FontAwesomeIcon icon={faWindowClose} className={styles.icon}></FontAwesomeIcon>
-                  </Button>
-                  {/* {console.log(addToCart)} */}
+          <Container className={styles.container}>
+            <div className={styles.totalQty}>
+              <h2>{totalQty} w koszyku</h2>
+            </div>
+            {cart.data && cart.data.map(item => (
+              <Col xs={12} md={6} lg={4} key={item._id} className={styles.mainCol} >
+                <Row className={`${styles.buttonLine} d-flex align-items-center justify-content-between`}>
+                  <Col className={styles.colLeft}>
+                    <img src={item.image} alt='zdjęcie ubrania' className={styles.img} />
+                  </Col>
+                  {console.log(cart)}
+                  <Col className={styles.colRight}>
+                    <h2 className={styles.name}>{item.name} x {item.qty}</h2>
+                    <p>{item.totalPrice}</p>
+                  </Col>
+                  <Col>
+                    <Button variant="danger" title="Usuń z koszyka"
+                      className={styles.removeButton}
+                      onClick={() => { this.props.removeFromCart(); }}
+                    >
+                      <FontAwesomeIcon icon={faWindowClose} className={styles.icon}></FontAwesomeIcon>
+                    </Button>
+                    {/* {console.log(addToCart)} */}
+                  </Col>
                 </Row>
               </Col>
-            </Col>
-          ))}
-          {cart.data.length !== 0 && (
-            <div className={styles.cart}>
-              <div className={styles.total}>
-                <div>
-                  Razem:{' '}
-                  {totalPrice}
+            ))
+            }
+            {
+              cart.data.length !== 0 && (
+                <div className={styles.cart}>
+                  <div className={styles.total}>
+                    <div>
+                      Razem:{' '}
+                      {totalPrice}
+                    </div>
+                    <Button variant="secondary">Zamówienie</Button>
+                  </div>
                 </div>
-                <Button variant="secondary">Zamówienie</Button>
-              </div>
-            </div>
-          )}
-
-        </div>
+              )
+            }
+          </Container>
+        </div >
       );
     } else {
-      return <h2>Koszyk jest pusty</h2>;
+      return <div className={styles.empty}><h2>Koszyk jest pusty</h2></div>;
     }
   }
 }

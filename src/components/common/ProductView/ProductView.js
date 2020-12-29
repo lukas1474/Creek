@@ -89,20 +89,21 @@ class ProductView extends React.Component {
               >
               </FontAwesomeIcon>
             </Button>
-            {console.log(this.props.addToCart)}
             <Row>
-              <Button variant="primary"
+              <Button variant="secondary"
                 onClick={() => {
                   this.decrease();
                 }}
+                className={styles.inButton}
               >
                 -
               </Button>
-              <p>{this.state.qty}</p>
-              <Button variant="primary"
+              <p className={styles.pqty}>{this.state.qty}</p>
+              <Button variant="secondary"
                 onClick={() => {
                   this.increase();
                 }}
+                className={styles.inButton}
               >
                 +
               </Button>
