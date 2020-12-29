@@ -6,7 +6,6 @@ const mongoose = require('mongoose');
 const productsRoutes = require('./routes/products.routes');
 const subpagesRoutes = require('./routes/subpages.routes');
 const contactsRoutes = require('./routes/contacts.routes');
-const cartsRoutes = require('./routes/carts.routes');
 
 const app = express();
 
@@ -20,7 +19,6 @@ app.use(express.static(path.join(__dirname, `../build`)));
 app.use('/api', productsRoutes);
 app.use('/api', subpagesRoutes);
 app.use(`/api`, contactsRoutes);
-app.use(`/api`, cartsRoutes);
 
 /* REACT WEBSITE */
 app.use(express.static(path.join(__dirname, '../build')));
